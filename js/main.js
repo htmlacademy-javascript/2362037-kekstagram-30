@@ -1,4 +1,4 @@
-const allFotos = 25;
+const ALL_FOTOS = 25;
 
 const descriptions = [ 'Жил в озерке золотистый карасик',
   'Ласково звали карасика — Васик',
@@ -82,7 +82,6 @@ const createId = () => {
 
 const idNumber = createId();
 const fotoNumber = createId();
-const descriptionsNumber = createId();
 const idAvatarNumber = createId();
 
 const createComments = () => ({
@@ -95,11 +94,9 @@ const createComments = () => ({
 const createFotoDescription = () => ({
   id: idNumber(),
   url: 'photos/' + fotoNumber() + '.jpg', //eslint-disable-line
-  description: descriptions[descriptionsNumber()],
+  description: descriptions[getRandomInt(0, ALL_FOTOS)],
   likes: getRandomInt(15,200),
-  comments: Array.from({length: getRandomInt(0,30)}, createComments),
+  comments: Array.from({length: getRandomInt(0, 30)}, createComments),
 });
 
-const userFoto = Array.from({length: allFotos}, createFotoDescription);
-
-console.log(userFoto);
+const userFoto = Array.from({length: ALL_FOTOS}, createFotoDescription);
