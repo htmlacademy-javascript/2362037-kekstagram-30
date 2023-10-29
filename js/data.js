@@ -66,9 +66,9 @@ const names = [
   'Киплинг',
 ];
 
+const idAvatarNumber = createId();
 const idNumber = createId();
 const imgNumber = createId();
-const idAvatarNumber = createId();
 
 const createComments = () => ({
   id: idAvatarNumber(),
@@ -80,10 +80,9 @@ const createComments = () => ({
 const createImgDescription = () => ({
   id: idNumber(),
   url: 'photos/' + imgNumber() + '.jpg', //eslint-disable-line
-  description: descriptions[getRandomInt(0, ALL_FOTOS)],
+  description: descriptions[getRandomInt(0, ALL_IMAGES)],
   likes: getRandomInt(15,200),
   comments: Array.from({length: getRandomInt(0, 30)}, createComments),
 });
 
-export const createUserImg = () => Array.from({length: ALL_IMAGES}, createImgDescription);
-createUserImg();
+export const createUserImages = Array.from({length: ALL_IMAGES}, createImgDescription);
