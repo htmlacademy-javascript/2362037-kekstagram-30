@@ -1,3 +1,3 @@
-import {createUserImg} from './data.js';
+import {createUserImages} from './data.js';
 
-createUserImg();
+import './thumbnails.js';
