@@ -4,7 +4,6 @@ const bigPictureModal = document.querySelector('.big-picture');
 const bigPictureModalClose = document.querySelector('.big-picture__cancel');
 const commentList = bigPictureModal.querySelector('.social__comments');
 
-
 // Закрытие модельного окна
 const closeBigPictureModal = () => {
   bigPictureModal.classList.add('hidden');
@@ -36,28 +35,31 @@ const renderBigPicture = (imageData) => {
 };
 
 // Отрисовка комментариев
-const renderComments = (imageData) => {
+const renderComments = (comments) => {
+  const fragment = document.createDocumentFragment();
   bigPictureModal.querySelector('.social__comment-count').classList.add('hidden');
   bigPictureModal.querySelector('.comments-loader').classList.add('hidden');
 
-  for (let i = 0; i <= imageData.comments.length - 1; i++) {
+  for (let i = 0; i <= comments.length - 1; i++) {
     const newComment = document.createElement('li');
     newComment.classList.add('social__comment');
 
     const commentAvatar = document.createElement('img');
     commentAvatar.classList.add('social__picture');
-    commentAvatar.src = imageData.comments[i].avatar;
-    commentAvatar.alt = imageData.comments[i].name;
+    commentAvatar.src = comments[i].avatar;
+    commentAvatar.alt = comments[i].name;
     commentAvatar.width = '35';
     commentAvatar.height = '35';
     newComment.append(commentAvatar);
 
     const commentText = document.createElement('p');
-    commentText.textContent = imageData.comments[i].message;
+    commentText.textContent = comments[i].message;
     newComment.append(commentText);
 
-    commentList.append(newComment);
+    fragment.append(newComment);
   }
+
+  commentList.append(fragment);
 };
 
 // Открытие модельного окна
@@ -68,7 +70,7 @@ export const openBigPictureModal = (imageData) => {
   document.addEventListener('keydown', onDocumentKeydown);
 
   renderBigPicture(imageData);
-  renderComments(imageData);
+  renderComments(imageData.comments);
 };
 
 // Обработчик на кнопку закрытия
