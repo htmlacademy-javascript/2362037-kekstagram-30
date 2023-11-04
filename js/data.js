@@ -85,4 +85,4 @@ const createImgDescription = () => ({
   comments: Array.from({length: getRandomInt(0, 30)}, createComments),
 });
 
-export const createUserImages = Array.from({length: ALL_IMAGES}, createImgDescription);
+export const userImagesArray = Array.from({length: ALL_IMAGES}, createImgDescription);

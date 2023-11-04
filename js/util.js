@@ -13,3 +13,5 @@ export const createId = () => {
     return lastId;
   };
 };
+
+export const isEscapeKey = (evt) => evt.key === 'Escape';
