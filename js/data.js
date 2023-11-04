@@ -1,4 +1,4 @@
-import {getRandomInt, createId} from './util.js';
+import { getRandomInt, createId } from './util.js';
 
 const ALL_IMAGES = 25;
 
@@ -85,4 +85,4 @@ const createImgDescription = () => ({
   comments: Array.from({length: getRandomInt(0, 30)}, createComments),
 });
 
-export const userImagesArray = Array.from({length: ALL_IMAGES}, createImgDescription);
+export const images = Array.from({length: ALL_IMAGES}, createImgDescription);
