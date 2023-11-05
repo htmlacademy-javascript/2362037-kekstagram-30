@@ -1,13 +1,18 @@
-import {createUserImages} from './data.js';
+import { images } from './data.js';
 
-const thumbnails = document.querySelector('.pictures');
-const newthumbnailTemplate = document.querySelector('#picture').content;
+const thumbnailTemplate = document.querySelector('#picture').content;
+const fragment = document.createDocumentFragment();
 
-createUserImages.forEach(({url, description, comments, likes}) => {
-  const newthumbnail = newthumbnailTemplate.querySelector('.picture').cloneNode(true);
-  newthumbnail.querySelector('.picture__img').src = url;
-  newthumbnail.querySelector('.picture__img').alt = description;
-  newthumbnail.querySelector('.picture__comments').textContent = comments.length;
-  newthumbnail.querySelector('.picture__likes').textContent = likes;
-  thumbnails.append(newthumbnail);
+images.forEach(({url, description, comments, likes, id}) => {
+  const thumbnail = thumbnailTemplate.querySelector('.picture').cloneNode(true);
+  thumbnail.querySelector('.picture__img').src = url;
+  thumbnail.querySelector('.picture__img').alt = description;
+  thumbnail.querySelector('.picture__comments').textContent = comments.length;
+  thumbnail.querySelector('.picture__likes').textContent = likes;
+  thumbnail.dataset.thumbnailId = id;
+  fragment.append(thumbnail);
 });
+
+export const renderThumbnails = (container) => {
+  container.append(fragment);
+};
