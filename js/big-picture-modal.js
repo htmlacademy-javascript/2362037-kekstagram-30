@@ -1,4 +1,4 @@
-import {isEscapeKey} from './util.js';
+import {isEscapeKey} from './utils.js';
 
 const SHOWN_COMMENTS_STEP = 5;
 const bigPictureModal = document.querySelector('.big-picture');
