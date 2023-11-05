@@ -1,4 +1,4 @@
-import { getRandomInt, createId } from './util.js';
+import { getRandomInt, createId } from './utils.js';
 
 const ALL_IMAGES = 25;
 
