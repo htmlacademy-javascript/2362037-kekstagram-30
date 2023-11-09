@@ -1,6 +1,6 @@
 import { getRandomInt, createId } from './utils.js';
 
-const ALL_IMAGES = 25;
+const ALL_PICTURES = 25;
 
 const descriptions = [ 'Жил в озерке золотистый карасик',
   'Ласково звали карасика — Васик',
@@ -80,9 +80,9 @@ const createComments = () => ({
 const createImgDescription = () => ({
   id: idNumber(),
   url: 'photos/' + imgNumber() + '.jpg', //eslint-disable-line
-  description: descriptions[getRandomInt(0, ALL_IMAGES)],
+  description: descriptions[getRandomInt(0, ALL_PICTURES)],
   likes: getRandomInt(15,200),
   comments: Array.from({length: getRandomInt(0, 30)}, createComments),
 });
 
-export const images = Array.from({length: ALL_IMAGES}, createImgDescription);
+export const pictures = Array.from({length: ALL_PICTURES}, createImgDescription);

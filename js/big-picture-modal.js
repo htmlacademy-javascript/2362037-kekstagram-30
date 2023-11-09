@@ -8,7 +8,7 @@ const commentsLoaderButton = bigPictureModal.querySelector('.social__comments-lo
 let commentsShownCount = 0;
 let comments = [];
 
-// Закрытие модельного окна
+// Закрытие модального окна
 const closeBigPictureModal = () => {
   bigPictureModal.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
@@ -31,11 +31,11 @@ function onDocumentKeydown (evt) {
 }
 
 // Отрисовка картинки
-const renderBigPicture = (imageData) => {
-  bigPictureModal.querySelector('.big-picture__img img').src = imageData.url;
-  bigPictureModal.querySelector('.big-picture__img img').alt = imageData.description;
-  bigPictureModal.querySelector('.social__caption').textContent = imageData.description;
-  bigPictureModal.querySelector('.likes-count').textContent = imageData.likes;
+const renderBigPicture = (pictureData) => {
+  bigPictureModal.querySelector('.big-picture__img img').src = pictureData.url;
+  bigPictureModal.querySelector('.big-picture__img img').alt = pictureData.description;
+  bigPictureModal.querySelector('.social__caption').textContent = pictureData.description;
+  bigPictureModal.querySelector('.likes-count').textContent = pictureData.likes;
 };
 
 // Создание комметариев
@@ -89,15 +89,15 @@ const onCommentsLoaderButtonClick = () => {
 commentsLoaderButton.addEventListener ('click', onCommentsLoaderButtonClick);
 
 // Открытие модального окна
-export const openBigPictureModal = (imageData) => {
+export const openBigPictureModal = (pictureData) => {
   document.querySelector('body').classList.add('modal-open');
   bigPictureModal.classList.remove('hidden');
   commentList.innerHTML = '';
   document.addEventListener('keydown', onDocumentKeydown);
 
-  renderBigPicture(imageData);
+  renderBigPicture(pictureData);
 
-  comments = imageData.comments;
+  comments = pictureData.comments;
   renderComments();
 };
 
