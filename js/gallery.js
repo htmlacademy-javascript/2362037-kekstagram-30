@@ -3,7 +3,7 @@ import { openBigPictureModal } from './big-picture-modal';
 
 const thumbnailsContainer = document.querySelector('.pictures');
 
-export const renderGallery = (images) => {
+export const renderGallery = (pictures) => {
   renderThumbnails(thumbnailsContainer);
 
   thumbnailsContainer.addEventListener('click', (evt) => {
@@ -15,8 +15,8 @@ export const renderGallery = (images) => {
 
     evt.preventDefault();
     const thumbnailId = +thumbnail.dataset.thumbnailId;
-    const imageData = images.find(({ id }) => id === thumbnailId);
+    const pictureData = pictures.find(({ id }) => id === thumbnailId);
 
-    openBigPictureModal(imageData);
+    openBigPictureModal(pictureData);
   });
 };

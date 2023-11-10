@@ -1,9 +1,9 @@
-import { images } from './data.js';
+import { pictures } from './data.js';
 
 const thumbnailTemplate = document.querySelector('#picture').content;
 const fragment = document.createDocumentFragment();
 
-images.forEach(({url, description, comments, likes, id}) => {
+pictures.forEach(({url, description, comments, likes, id}) => {
   const thumbnail = thumbnailTemplate.querySelector('.picture').cloneNode(true);
   thumbnail.querySelector('.picture__img').src = url;
   thumbnail.querySelector('.picture__img').alt = description;
