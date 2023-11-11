@@ -25,6 +25,8 @@ const closeImgUploadModal = () => {
   imgUploadInput.value = '';
   document.removeEventListener('keydown', onDocumentKeydown);
   pristine.destroy();
+  document.querySelector('.img-upload__overlay').removeEventListener('keydown', onDocumentKeydown);
+  document.querySelector('.img-upload__cancel').removeEventListener('keydown', onDocumentKeydown);
 };
 
 const onimgUploadModalCloseClick = () => {

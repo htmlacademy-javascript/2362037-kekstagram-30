@@ -8,3 +8,5 @@ renderGallery(pictures);
 
 import './picture-upload-modal.js';
 import './form-validation.js';
+import './scale-picture.js';
+import './picture-effects.js';
