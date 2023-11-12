@@ -72,14 +72,14 @@ const imgNumber = createId();
 
 const createComments = () => ({
   id: idAvatarNumber(),
-  avatar: 'img/avatar-' + getRandomInt(1, 6) + '.svg', //eslint-disable-line
+  avatar: `img/avatar-${getRandomInt(1, 6)}.svg`,
   message: messages[getRandomInt(0, messages.length - 1)],
   name: names[getRandomInt(0, names.length - 1)],
 });
 
 const createImgDescription = () => ({
   id: idNumber(),
-  url: 'photos/' + imgNumber() + '.jpg', //eslint-disable-line
+  url: `photos/${imgNumber()}.jpg`,
   description: descriptions[getRandomInt(0, ALL_PICTURES)],
   likes: getRandomInt(15,200),
   comments: Array.from({length: getRandomInt(0, 30)}, createComments),
