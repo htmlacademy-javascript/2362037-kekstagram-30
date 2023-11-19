@@ -19,7 +19,7 @@ const onimgUploadInputChange = () => {
 imgUploadInput.addEventListener('change', onimgUploadInputChange);
 
 // Закрытие окна редактирования изображения
-const closeImgUploadModal = () => {
+export const closeImgUploadModal = () => {
   imgUploadModal.classList.add('hidden');
   document.querySelector('body').classList.remove('.modal-open');
   imgUploadInput.value = '';
@@ -37,8 +37,11 @@ imgUploadModalClose.addEventListener('click', onimgUploadModalCloseClick);
 
 // Закрытие по Esc
 export function onDocumentKeydown (evt) {
-  if (isEscapeKey(evt)) {
+  const isErrorMessageOpen = Boolean(document.querySelector('.error'));
+
+  if (isEscapeKey(evt) && !isErrorMessageOpen) {
     evt.preventDefault();
     closeImgUploadModal();
   }
 }
+
