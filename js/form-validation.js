@@ -1,4 +1,7 @@
 import { onDocumentKeydown } from './picture-upload-modal';
+import { sendData } from './server.js';
+import { closeImgUploadModal } from './picture-upload-modal.js';
+import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const HASHTAGS_MAX = 5;
 
@@ -6,6 +9,21 @@ const imgUploadform = document.querySelector('.img-upload__form');
 const hashtagsInput = document.querySelector('.text__hashtags');
 const descriptionInput = document.querySelector('.text__description');
 const hashtagPattern = /^#[a-zа-яё0-9]{1,19}$/i;
+const submitButton = imgUploadform.querySelector('.img-upload__submit');
+
+const submitButtonText = {
+  ACTION: 'Отправляю...',
+  INACTION: 'Опубликовать',
+};
+
+const toggleSubmitButton = (isDisabled) => {
+  submitButton.disabled = isDisabled;
+  if (isDisabled) {
+    submitButton.textContent = submitButtonText.ACTION;
+  } else {
+    submitButton.textContent = submitButtonText.INACTION;
+  }
+};
 
 export const pristine = new Pristine(imgUploadform, {
   classTo: 'img-upload__field-wrapper',
@@ -62,11 +80,6 @@ pristine.addValidator(
   'Не более 140 символов'
 );
 
-imgUploadform.addEventListener('submit', (evt) =>{
-  evt.preventDefault();
-  pristine.validate();
-});
-
 // Отмена Esc при фокусе
 hashtagsInput.addEventListener('focus', () => {
   document.removeEventListener('keydown', onDocumentKeydown);
@@ -83,3 +96,29 @@ descriptionInput.addEventListener('focus', () => {
 descriptionInput.addEventListener('blur', () => {
   document.addEventListener('keydown', onDocumentKeydown);
 });
+
+// Отправка формы
+const sendForm = (form) => {
+  if (!pristine.validate()) {
+    return;
+  }
+  sendData(new FormData(form))
+    .then(() => {
+      toggleSubmitButton(true);
+      toggleSubmitButton(false);
+      closeImgUploadModal();
+      showSuccessMessage();
+    })
+    .catch(() => {
+      toggleSubmitButton(false);
+      showErrorMessage();
+    });
+};
+
+const onImgUploadformSubmit = (evt) => {
+  evt.preventDefault();
+  sendForm(evt.target);
+};
+
+imgUploadform.addEventListener('submit', onImgUploadformSubmit);
+
