@@ -16,7 +16,7 @@ const submitButtonText = {
   INACTION: 'Опубликовать',
 };
 
-const toggleSubmitButton = (isDisabled) => {
+const toggleStateSubmitButton = (isDisabled) => {
   submitButton.disabled = isDisabled;
   if (isDisabled) {
     submitButton.textContent = submitButtonText.ACTION;
@@ -102,16 +102,17 @@ const sendForm = (form) => {
   if (!pristine.validate()) {
     return;
   }
+  toggleStateSubmitButton(true);
   sendData(new FormData(form))
     .then(() => {
-      toggleSubmitButton(true);
-      toggleSubmitButton(false);
       closeImgUploadModal();
       showSuccessMessage();
     })
     .catch(() => {
-      toggleSubmitButton(false);
       showErrorMessage();
+    })
+    .finally(() => {
+      toggleStateSubmitButton(false);
     });
 };
 
