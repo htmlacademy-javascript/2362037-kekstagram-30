@@ -1,16 +1,3 @@
-const effectSlider = document.querySelector('.effect-level__slider');
-const sliderContainer = document.querySelector('.img-upload__effect-level');
-const effectSliderInput = document.querySelector('.effect-level__value');
-const radioButtons = document.querySelectorAll('.effects__radio');
-const effectNoneButton = document.querySelector('#effect-none');
-const effectChromeButton = document.querySelector('#effect-chrome');
-const effectSepiaButton = document.querySelector('#effect-sepia');
-const effectMarvinButton = document.querySelector('#effect-marvin');
-const effectPhobosButton = document.querySelector('#effect-phobos');
-const effectHeatButton = document.querySelector('#effect-heat');
-const picturePreview = document.querySelector('.img-upload__preview');
-let effectSliderValue;
-
 const filters = [
   {effect: 'chrome',
     filter: 'grayscale',
@@ -37,6 +24,19 @@ const filters = [
     unit: ''
   },
 ];
+
+const effectSlider = document.querySelector('.effect-level__slider');
+const sliderContainer = document.querySelector('.img-upload__effect-level');
+const effectSliderInput = document.querySelector('.effect-level__value');
+const radioButtons = document.querySelectorAll('.effects__radio');
+const effectNoneButton = document.querySelector('#effect-none');
+const effectChromeButton = document.querySelector('#effect-chrome');
+const effectSepiaButton = document.querySelector('#effect-sepia');
+const effectMarvinButton = document.querySelector('#effect-marvin');
+const effectPhobosButton = document.querySelector('#effect-phobos');
+const effectHeatButton = document.querySelector('#effect-heat');
+const picturePreview = document.querySelector('.img-upload__preview');
+let effectSliderValue;
 
 
 sliderContainer.classList.add('hidden');

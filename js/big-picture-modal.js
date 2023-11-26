@@ -1,6 +1,7 @@
 import {isEscapeKey} from './utils.js';
 
 const SHOWN_COMMENTS_STEP = 5;
+
 const bigPictureModal = document.querySelector('.big-picture');
 const bigPictureModalClose = document.querySelector('.big-picture__cancel');
 const commentList = bigPictureModal.querySelector('.social__comments');

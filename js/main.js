@@ -12,12 +12,13 @@ import './picture-upload-modal.js';
 import './form-validation.js';
 import './scale-picture.js';
 import './picture-effects.js';
+import './picture-upload.js';
+
+const FILTER_DELAY = 500;
 
 const filterDefault = document.querySelector('#filter-default');
 const filterRandom = document.querySelector('#filter-random');
 const filterDiscussed = document.querySelector('#filter-discussed');
-
-const FILTER_DELAY = 500;
 
 getData()
   .then((pictures) => {
