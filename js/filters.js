@@ -1,13 +1,13 @@
 import { getRandomInt } from './utils.js';
 import { renderGallery } from './gallery.js';
 
+const RANDOM_PICTURE_MAX = 10;
+
 const filters = document.querySelector('.img-filters');
 const filterDefault = filters.querySelector('#filter-default');
 const filterRandom = filters.querySelector('#filter-random');
 const filterDiscussed = filters.querySelector('#filter-discussed');
 const newPictures = [];
-
-const RANDOM_PICTURE_MAX = 10;
 
 export const showFilters = () => {
   filters.classList.remove('img-filters--inactive');

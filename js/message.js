@@ -1,12 +1,12 @@
 import { isEscapeKey } from './utils.js';
 
+const ERROR_TIMEOUT = 5000;
+
 const successMessage = document.querySelector('#success').content.querySelector('.success');
 const successButton = successMessage.querySelector('.success__button');
 const getDataError = document.querySelector('#data-error').content.querySelector('.data-error');
 const sendDataError = document.querySelector('#error').content.querySelector('.error');
 const errorButton = sendDataError.querySelector('.error__button');
-
-const ERROR_TIMEOUT = 5000;
 
 // Ошибка получения данных
 export const getErrorMessage = () => {
