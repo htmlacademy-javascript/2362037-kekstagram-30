@@ -1,27 +1,25 @@
-const scaleControlSmaller = document.querySelector('.scale__control--smaller');
-const scaleControlBigger = document.querySelector('.scale__control--bigger');
+
 const scaleControlInput = document.querySelector('.scale__control--value');
-let scaleControlValue = parseFloat(scaleControlInput.value);
 const picturePreview = document.querySelector('.img-upload__preview img');
 
-const onscaleControlSmallerClick = () => {
+export const onscaleControlSmallerClick = () => {
+  let scaleControlValue = parseFloat(scaleControlInput.value);
   if (scaleControlValue > 25) {
     scaleControlValue -= 25;
+    scaleControlInput.value = `${scaleControlValue}%`;
   }
-  scaleControlInput.value = `${scaleControlValue}%`;
   picturePreview.style.transform = `scale(0.${scaleControlValue})`;
 };
 
-scaleControlSmaller.addEventListener ('click', onscaleControlSmallerClick);
-
-const onscaleControlBiggerClick = () => {
+export const onscaleControlBiggerClick = () => {
+  let scaleControlValue = parseFloat(scaleControlInput.value);
   if (scaleControlValue < 75) {
     scaleControlValue += 25;
     picturePreview.style.transform = `scale(0.${scaleControlValue})`;
-  } else {
+  } else if (scaleControlValue === 75) {
+    scaleControlValue += 25;
     picturePreview.style.transform = 'scale(1)';
   }
   scaleControlInput.value = `${scaleControlValue}%`;
 };
 
-scaleControlBigger.addEventListener ('click', onscaleControlBiggerClick);

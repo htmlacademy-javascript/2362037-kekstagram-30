@@ -38,7 +38,6 @@ const effectHeatButton = document.querySelector('#effect-heat');
 const picturePreview = document.querySelector('.img-upload__preview');
 let effectSliderValue;
 
-
 sliderContainer.classList.add('hidden');
 
 noUiSlider.create(effectSlider, {
@@ -139,7 +138,7 @@ effectPhobosButton.addEventListener('change', () => {
   sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
-      min: 1,
+      min: 0,
       max: 3
     },
     start: 3,

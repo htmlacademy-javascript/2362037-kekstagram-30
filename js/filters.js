@@ -1,7 +1,9 @@
 import { getRandomInt } from './utils.js';
 import { renderGallery } from './gallery.js';
+import { debounce } from './utils.js';
 
 const RANDOM_PICTURE_MAX = 10;
+const FILTER_DELAY = 500;
 
 const filters = document.querySelector('.img-filters');
 const filterDefault = filters.querySelector('#filter-default');
@@ -43,7 +45,8 @@ export const getRandomPictures = (pictures) => {
       newPictures.push(element);
     }
   }
-  renderGallery(newPictures);
+
+  debounce(renderGallery(newPictures), FILTER_DELAY);
 };
 
 // Сортировка по популярности
@@ -60,12 +63,12 @@ export const getDiscussedPictures = (pictures) => {
 
   pictures.sort(compareCommentsLength);
 
-  renderGallery(pictures);
+  debounce(renderGallery(pictures), FILTER_DELAY);
 };
 
 // По умолчанию (callback)
 
 export const getDefaultPictures = (pictures) => {
   onfilterClick(filterDefault);
-  renderGallery(pictures);
+  debounce(renderGallery(pictures), FILTER_DELAY);
 };
