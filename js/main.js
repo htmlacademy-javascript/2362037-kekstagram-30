@@ -4,9 +4,6 @@ import { getErrorMessage } from './message.js';
 import { showFilters } from './filters.js';
 import { renderFilterPictures, getRandomPictures, getDiscussedPictures, getDefaultPictures } from './filters.js';
 
-import './thumbnails.js';
-import './big-picture-modal.js';
-
 import './picture-upload-modal.js';
 import './form-validation.js';
 import './scale-picture.js';

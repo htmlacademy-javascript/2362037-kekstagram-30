@@ -1,27 +1,37 @@
 import { isEscapeKey } from './utils.js';
-import { pristine } from './form-validation.js';
 import { onscaleControlSmallerClick, onscaleControlBiggerClick } from './scale-picture.js';
+import { onEffectChromeButtonClick, onEffectNoneButtonClick, onEffectSepiaButtonClick, onEffectMarvinButtonClick, onEffectPhobosButtonClick, onEffectHeatButtonClick } from './picture-effects.js';
+import { onImgUploadFormSubmit } from './form-validation.js';
 
 const imgUploadInput = document.querySelector('.img-upload__input');
 const imgUploadModal = document.querySelector('.img-upload__overlay');
 const imgUploadModalClose = document.querySelector('.img-upload__cancel');
 const scaleControlSmaller = document.querySelector('.scale__control--smaller');
 const scaleControlBigger = document.querySelector('.scale__control--bigger');
+const effectNoneButton = document.querySelector('#effect-none');
+const effectChromeButton = document.querySelector('#effect-chrome');
+const effectSepiaButton = document.querySelector('#effect-sepia');
+const effectMarvinButton = document.querySelector('#effect-marvin');
+const effectPhobosButton = document.querySelector('#effect-phobos');
+const effectHeatButton = document.querySelector('#effect-heat');
+const imgUploadForm = document.querySelector('.img-upload__form');
 
 // Открытие окна редактирования изображения
-const openImgUploadModal = () => {
+export const openImgUploadModal = () => {
   imgUploadModal.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
+  document.querySelector('#effect-none').checked = true;
   scaleControlSmaller.addEventListener ('click', onscaleControlSmallerClick);
   scaleControlBigger.addEventListener ('click', onscaleControlBiggerClick);
+  effectChromeButton.addEventListener('change', onEffectChromeButtonClick);
+  effectNoneButton.addEventListener('change', onEffectNoneButtonClick);
+  effectSepiaButton.addEventListener('change', onEffectSepiaButtonClick);
+  effectMarvinButton.addEventListener('change', onEffectMarvinButtonClick);
+  effectPhobosButton.addEventListener('change', onEffectPhobosButtonClick);
+  effectHeatButton.addEventListener('change', onEffectHeatButtonClick);
+  imgUploadForm.addEventListener('submit', onImgUploadFormSubmit);
 };
-
-const onimgUploadInputChange = () => {
-  openImgUploadModal();
-};
-
-imgUploadInput.addEventListener('change', onimgUploadInputChange);
 
 // Закрытие окна редактирования изображения
 export const closeImgUploadModal = () => {
@@ -31,10 +41,20 @@ export const closeImgUploadModal = () => {
   document.querySelector('.text__hashtags').value = '';
   document.querySelector('.text__description').value = '';
   document.querySelector('.img-upload__preview img').style.transform = 'none';
+  document.querySelector('.img-upload__preview img').style.filter = '';
+  document.querySelector('.img-upload__effect-level').classList.add('hidden');
   document.removeEventListener('keydown', onDocumentKeydown);
-  pristine.destroy();
   document.querySelector('.img-upload__overlay').removeEventListener('keydown', onDocumentKeydown);
   document.querySelector('.img-upload__cancel').removeEventListener('keydown', onDocumentKeydown);
+  scaleControlSmaller.removeEventListener ('click', onscaleControlSmallerClick);
+  scaleControlBigger.removeEventListener ('click', onscaleControlBiggerClick);
+  effectChromeButton.removeEventListener('change', onEffectChromeButtonClick);
+  effectNoneButton.removeEventListener('change', onEffectNoneButtonClick);
+  effectSepiaButton.removeEventListener('change', onEffectSepiaButtonClick);
+  effectMarvinButton.removeEventListener('change', onEffectMarvinButtonClick);
+  effectPhobosButton.removeEventListener('change', onEffectPhobosButtonClick);
+  effectHeatButton.removeEventListener('change', onEffectHeatButtonClick);
+  imgUploadForm.removeEventListener('submit', onImgUploadFormSubmit);
 };
 
 const onimgUploadModalCloseClick = () => {
