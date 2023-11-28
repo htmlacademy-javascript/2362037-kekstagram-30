@@ -1,3 +1,5 @@
+import { openImgUploadModal } from './picture-upload-modal.js';
+
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const imgUploadInput = document.querySelector('.img-upload__input');
@@ -20,6 +22,8 @@ const onUploadInputChange = () => {
   } else {
     preview.src = '';
   }
+
+  openImgUploadModal();
 };
 
 imgUploadInput.addEventListener('change', onUploadInputChange);

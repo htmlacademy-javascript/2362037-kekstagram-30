@@ -29,13 +29,7 @@ const effectSlider = document.querySelector('.effect-level__slider');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 const effectSliderInput = document.querySelector('.effect-level__value');
 const radioButtons = document.querySelectorAll('.effects__radio');
-const effectNoneButton = document.querySelector('#effect-none');
-const effectChromeButton = document.querySelector('#effect-chrome');
-const effectSepiaButton = document.querySelector('#effect-sepia');
-const effectMarvinButton = document.querySelector('#effect-marvin');
-const effectPhobosButton = document.querySelector('#effect-phobos');
-const effectHeatButton = document.querySelector('#effect-heat');
-const picturePreview = document.querySelector('.img-upload__preview');
+const picturePreview = document.querySelector('.img-upload__preview img');
 let effectSliderValue;
 
 sliderContainer.classList.add('hidden');
@@ -88,13 +82,12 @@ effectSlider.noUiSlider.on('update', () => {
 });
 
 //Обработчики кликов по эффектам
-
-effectNoneButton.addEventListener('change', () => {
+export const onEffectNoneButtonClick = () => {
   sliderContainer.classList.add('hidden');
   picturePreview.style.filter = '';
-});
+};
 
-effectChromeButton.addEventListener('change', () => {
+export const onEffectChromeButtonClick = () => {
   sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
@@ -105,9 +98,9 @@ effectChromeButton.addEventListener('change', () => {
   });
   effectSlider.noUiSlider.set(effectSliderValue);
   getFilter();
-});
+};
 
-effectSepiaButton.addEventListener('change', () => {
+export const onEffectSepiaButtonClick = () => {
   sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
@@ -118,9 +111,9 @@ effectSepiaButton.addEventListener('change', () => {
   });
   effectSlider.noUiSlider.set(effectSliderValue);
   getFilter();
-});
+};
 
-effectMarvinButton.addEventListener('change', () => {
+export const onEffectMarvinButtonClick = () => {
   sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
@@ -132,9 +125,9 @@ effectMarvinButton.addEventListener('change', () => {
   });
   effectSlider.noUiSlider.set(effectSliderValue);
   getFilter();
-});
+};
 
-effectPhobosButton.addEventListener('change', () => {
+export const onEffectPhobosButtonClick = () => {
   sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
@@ -146,9 +139,9 @@ effectPhobosButton.addEventListener('change', () => {
   });
   effectSlider.noUiSlider.set(effectSliderValue);
   getFilter();
-});
+};
 
-effectHeatButton.addEventListener('change', () => {
+export const onEffectHeatButtonClick = () => {
   sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
@@ -160,4 +153,4 @@ effectHeatButton.addEventListener('change', () => {
   });
   effectSlider.noUiSlider.set(effectSliderValue);
   getFilter();
-});
+};

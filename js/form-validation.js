@@ -5,11 +5,11 @@ import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const HASHTAGS_MAX = 5;
 
-const imgUploadform = document.querySelector('.img-upload__form');
+const imgUploadForm = document.querySelector('.img-upload__form');
 const hashtagsInput = document.querySelector('.text__hashtags');
 const descriptionInput = document.querySelector('.text__description');
 const hashtagPattern = /^#[a-zа-яё0-9]{1,19}$/i;
-const submitButton = imgUploadform.querySelector('.img-upload__submit');
+const submitButton = imgUploadForm.querySelector('.img-upload__submit');
 
 const submitButtonText = {
   ACTION: 'Отправляю...',
@@ -25,7 +25,7 @@ const toggleStateSubmitButton = (isDisabled) => {
   }
 };
 
-export const pristine = new Pristine(imgUploadform, {
+const pristine = new Pristine(imgUploadForm, {
   classTo: 'img-upload__field-wrapper',
   errorClass: 'img-upload__field-wrapper--error',
   errorTextParent: 'img-upload__field-wrapper',
@@ -116,10 +116,8 @@ const sendForm = (form) => {
     });
 };
 
-const onImgUploadformSubmit = (evt) => {
+export const onImgUploadFormSubmit = (evt) => {
   evt.preventDefault();
   sendForm(evt.target);
 };
-
-imgUploadform.addEventListener('submit', onImgUploadformSubmit);
 
