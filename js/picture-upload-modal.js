@@ -1,5 +1,5 @@
 import { isEscapeKey } from './utils.js';
-import { onscaleControlSmallerClick, onscaleControlBiggerClick } from './scale-picture.js';
+import { onScaleControlSmallerClick, onScaleControlBiggerClick } from './scale-picture.js';
 import { onEffectChromeButtonClick, onEffectNoneButtonClick, onEffectSepiaButtonClick, onEffectMarvinButtonClick, onEffectPhobosButtonClick, onEffectHeatButtonClick } from './picture-effects.js';
 import { onImgUploadFormSubmit } from './form-validation.js';
 
@@ -22,8 +22,8 @@ export const openImgUploadModal = () => {
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
   document.querySelector('#effect-none').checked = true;
-  scaleControlSmaller.addEventListener ('click', onscaleControlSmallerClick);
-  scaleControlBigger.addEventListener ('click', onscaleControlBiggerClick);
+  scaleControlSmaller.addEventListener ('click', onScaleControlSmallerClick);
+  scaleControlBigger.addEventListener ('click', onScaleControlBiggerClick);
   effectChromeButton.addEventListener('change', onEffectChromeButtonClick);
   effectNoneButton.addEventListener('change', onEffectNoneButtonClick);
   effectSepiaButton.addEventListener('change', onEffectSepiaButtonClick);
@@ -40,14 +40,15 @@ export const closeImgUploadModal = () => {
   imgUploadInput.value = '';
   document.querySelector('.text__hashtags').value = '';
   document.querySelector('.text__description').value = '';
-  document.querySelector('.img-upload__preview img').style.transform = 'none';
+  document.querySelector('.scale__control--value').value = '100%';
+  document.querySelector('.img-upload__preview img').style.transform = '';
   document.querySelector('.img-upload__preview img').style.filter = '';
   document.querySelector('.img-upload__effect-level').classList.add('hidden');
   document.removeEventListener('keydown', onDocumentKeydown);
   document.querySelector('.img-upload__overlay').removeEventListener('keydown', onDocumentKeydown);
   document.querySelector('.img-upload__cancel').removeEventListener('keydown', onDocumentKeydown);
-  scaleControlSmaller.removeEventListener ('click', onscaleControlSmallerClick);
-  scaleControlBigger.removeEventListener ('click', onscaleControlBiggerClick);
+  scaleControlSmaller.removeEventListener ('click', onScaleControlSmallerClick);
+  scaleControlBigger.removeEventListener ('click', onScaleControlBiggerClick);
   effectChromeButton.removeEventListener('change', onEffectChromeButtonClick);
   effectNoneButton.removeEventListener('change', onEffectNoneButtonClick);
   effectSepiaButton.removeEventListener('change', onEffectSepiaButtonClick);
@@ -57,11 +58,11 @@ export const closeImgUploadModal = () => {
   imgUploadForm.removeEventListener('submit', onImgUploadFormSubmit);
 };
 
-const onimgUploadModalCloseClick = () => {
+const onImgUploadModalCloseClick = () => {
   closeImgUploadModal();
 };
 
-imgUploadModalClose.addEventListener('click', onimgUploadModalCloseClick);
+imgUploadModalClose.addEventListener('click', onImgUploadModalCloseClick);
 
 // Закрытие по Esc
 export function onDocumentKeydown (evt) {

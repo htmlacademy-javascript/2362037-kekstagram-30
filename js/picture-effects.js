@@ -87,8 +87,13 @@ export const onEffectNoneButtonClick = () => {
   picturePreview.style.filter = '';
 };
 
-export const onEffectChromeButtonClick = () => {
+const onEffectClick = () => {
   sliderContainer.classList.remove('hidden');
+  effectSlider.noUiSlider.set(effectSliderValue);
+  getFilter();
+};
+
+export const onEffectChromeButtonClick = () => {
   effectSlider.noUiSlider.updateOptions ({
     range: {
       min: 0,
@@ -96,12 +101,10 @@ export const onEffectChromeButtonClick = () => {
     },
     start: 1
   });
-  effectSlider.noUiSlider.set(effectSliderValue);
-  getFilter();
+  onEffectClick();
 };
 
 export const onEffectSepiaButtonClick = () => {
-  sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
       min: 0,
@@ -109,12 +112,10 @@ export const onEffectSepiaButtonClick = () => {
     },
     start: 1
   });
-  effectSlider.noUiSlider.set(effectSliderValue);
-  getFilter();
+  onEffectClick();
 };
 
 export const onEffectMarvinButtonClick = () => {
-  sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
       min: 1,
@@ -123,12 +124,10 @@ export const onEffectMarvinButtonClick = () => {
     start: 100,
     step: 1
   });
-  effectSlider.noUiSlider.set(effectSliderValue);
-  getFilter();
+  onEffectClick();
 };
 
 export const onEffectPhobosButtonClick = () => {
-  sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
       min: 0,
@@ -137,12 +136,10 @@ export const onEffectPhobosButtonClick = () => {
     start: 3,
     step: 0.1
   });
-  effectSlider.noUiSlider.set(effectSliderValue);
-  getFilter();
+  onEffectClick();
 };
 
 export const onEffectHeatButtonClick = () => {
-  sliderContainer.classList.remove('hidden');
   effectSlider.noUiSlider.updateOptions ({
     range: {
       min: 1,
@@ -151,6 +148,5 @@ export const onEffectHeatButtonClick = () => {
     start: 3,
     step: 0.1
   });
-  effectSlider.noUiSlider.set(effectSliderValue);
-  getFilter();
+  onEffectClick();
 };

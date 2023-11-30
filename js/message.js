@@ -17,9 +17,9 @@ export const getErrorMessage = () => {
 // Закрытие сообщения с ошибкой
 const closeMessage = () => {
   const message = document.querySelector('.success') || document.querySelector('.error');
-  message.remove();
-  document.removeEventListener('click', onDocumentKeydown);
+  document.removeEventListener('keydown', onDocumentKeydown);
   document.body.removeEventListener('click', onBodyClick);
+  message.remove();
 };
 
 function onDocumentKeydown (evt) {
