@@ -1,10 +1,8 @@
 import { renderThumbnails } from './thumbnails';
 import { openBigPictureModal } from './big-picture-modal';
 
-const thumbnailsContainer = document.querySelector('.pictures');
-
 export const renderGallery = (pictures) => {
-  renderThumbnails(pictures, thumbnailsContainer);
+  const thumbnailsContainer = document.querySelector('.pictures');
 
   thumbnailsContainer.addEventListener('click', (evt) => {
     const thumbnail = evt.target.closest('[data-thumbnail-id]');
@@ -19,4 +17,5 @@ export const renderGallery = (pictures) => {
 
     openBigPictureModal(pictureData);
   });
+  renderThumbnails(pictures, thumbnailsContainer);
 };

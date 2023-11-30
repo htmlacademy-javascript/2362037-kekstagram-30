@@ -4,6 +4,7 @@ import { closeImgUploadModal } from './picture-upload-modal.js';
 import { showSuccessMessage, showErrorMessage } from './message.js';
 
 const HASHTAGS_MAX = 5;
+const COMMENT_MAX_LENGTH = 140;
 
 const imgUploadForm = document.querySelector('.img-upload__form');
 const hashtagsInput = document.querySelector('.text__hashtags');
@@ -72,7 +73,7 @@ pristine.addValidator(
 );
 
 // Валидация комментария
-const validateDescription = (value) => value.length < 140;
+const validateDescription = (value) => value.length < COMMENT_MAX_LENGTH;
 
 pristine.addValidator(
   descriptionInput,

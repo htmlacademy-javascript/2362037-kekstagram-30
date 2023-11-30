@@ -2,7 +2,7 @@
 const scaleControlInput = document.querySelector('.scale__control--value');
 const picturePreview = document.querySelector('.img-upload__preview img');
 
-export const onscaleControlSmallerClick = () => {
+export const onScaleControlSmallerClick = () => {
   let scaleControlValue = parseFloat(scaleControlInput.value);
   if (scaleControlValue > 25) {
     scaleControlValue -= 25;
@@ -11,7 +11,7 @@ export const onscaleControlSmallerClick = () => {
   picturePreview.style.transform = `scale(0.${scaleControlValue})`;
 };
 
-export const onscaleControlBiggerClick = () => {
+export const onScaleControlBiggerClick = () => {
   let scaleControlValue = parseFloat(scaleControlInput.value);
   if (scaleControlValue < 75) {
     scaleControlValue += 25;

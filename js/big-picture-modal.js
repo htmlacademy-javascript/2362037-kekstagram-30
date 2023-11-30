@@ -15,13 +15,13 @@ const closeBigPictureModal = () => {
   document.querySelector('body').classList.remove('modal-open');
   commentsShownCount = 0;
   bigPictureModal.querySelector('.comments-loader').classList.remove('hidden');
-
+  bigPictureModalClose.removeEventListener('click', onBigPictureModalCloseClick);
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
-const onBigPictureModalCloseClick = () => {
+function onBigPictureModalCloseClick () {
   closeBigPictureModal();
-};
+}
 
 // Закрытие по Esc
 function onDocumentKeydown (evt) {
@@ -73,6 +73,7 @@ const renderComments = () => {
 
   if (commentsShownCount >= comments.length) {
     bigPictureModal.querySelector('.comments-loader').classList.add('hidden');
+    commentsLoaderButton.removeEventListener('click', onCommentsLoaderButtonClick);
     commentsShownCount = comments.length;
   }
 
@@ -83,11 +84,9 @@ const renderComments = () => {
 };
 
 // Загрузка новых комментариев после нажатия кнопки
-const onCommentsLoaderButtonClick = () => {
+function onCommentsLoaderButtonClick () {
   renderComments();
-};
-
-commentsLoaderButton.addEventListener ('click', onCommentsLoaderButtonClick);
+}
 
 // Открытие модального окна
 export const openBigPictureModal = (pictureData) => {
@@ -99,8 +98,12 @@ export const openBigPictureModal = (pictureData) => {
   renderBigPicture(pictureData);
 
   comments = pictureData.comments;
+
   renderComments();
+
+  commentsLoaderButton.addEventListener ('click', onCommentsLoaderButtonClick);
+
+  // Обработчик на кнопку закрытия
+  bigPictureModalClose.addEventListener('click', onBigPictureModalCloseClick);
 };
 
-// Обработчик на кнопку закрытия
-bigPictureModalClose.addEventListener('click', onBigPictureModalCloseClick);
